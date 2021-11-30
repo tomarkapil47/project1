@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="js/jquery.js"></script>
+  
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <nav class="flex space align">
+        <div class="logo">
+            <a href="#">Kellers</a>
+        </div>
+        <div class="list">
+            <ul class="flex">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contasct</a></li>
+                <li><a href="#">Services</a></li>
+            </ul>
+        </div>
+        <div class="icon">
+            <a href="#"><i class="fas fa-bars" id="bars"></i></a>
+            <a href="#"><i class="fas fa-user" onclick="show()"></i></a>
+            <a href="#"><i class="fas fa-heart"><sup>0</sup></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"><sup>0</sup></i></a>
+        </div>
+    </nav>
+    <section>
+        <div class="sidebar">
+            <div class="toggle">
+                <i class="fas fa-times" onclick="hide()"></i>
+            </div>
+
+        </div>
+
+        </div>
+        <div class="main-body flex space">
+            <div class="col-3">
+                <div class="card">
+                    <img src="img/cat1.jpg" alt="machin" class="abc">
+                    <div class="card-body">
+                        <p class="productprice"><i class="fas fa-rupee-sign"></i>12000</p>
+
+                    </div>
+                    <button class="btn">Add To Cart</button>
+                </div>
+
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="img/cat2.jpg" alt="machin" class="abc">
+                    <div class="card-body">
+                        <p class="productprice"><i class="fas fa-rupee-sign"></i>14000</p>
+
+                    </div>
+                    <button class="btn">Add To Cart</button>
+                </div>
+
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="img/cat3.jpg" alt="machin" class="abc">
+                    <div class="card-body">
+                        <p class="productprice"><i class="fas fa-rupee-sign"></i>17000</p>
+
+                    </div>
+                    <button class="btn">Add To Cart</button>
+                </div>
+
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="img/cat4.jpg" alt="machin" class="abc">
+                    <div class="card-body">
+                        <p class="productprice"><i class="fas fa-rupee-sign"></i>20000</p>
+
+                    </div>
+                    <button class="btn">Add To Cart</button>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+
+
+
+    <script>
+        $(document).ready(function(){
+            $("#bars").click(function(){
+                $(".list").toggleClass("slider")
+            })
+        })
+
+        var addtocart = document.getElementsByClassName("btn")
+for (i = 0; i < addtocart.length; i++) {
+    addtocart[i].addEventListener("click", showcard)
+}
+
+
+function showcard(e) {
+    currentaddtocart = e.target;
+    productelement = currentaddtocart.parentElement;
+    productprice = productelement.getElementsByClassName("productprice")[0].innerText;
+    productimage = productelement.getElementsByClassName("abc")[0].src;
+    addproduct(productimage, productprice);
+}
+
+var sidebar = document.getElementsByClassName("sidebar")[0]
+function addproduct(productimage, productprice) {
+    var div = document.createElement("div")
+    div.classList.add("row");
+    content = `
+   <div class="col-3">
+            <div class="card">
+                <img src="${productimage}" alt="">
+                
+                </div>
+                <div class="productprice">
+                    <p><i class="fas fa-rupee-sign"></i>${productprice} </p>
+                    
+                </div>
+                <span class='span'>Remove</span>
+            </div>
+   
+   
+   
+   `
+    div.innerHTML = content;
+    sidebar.appendChild(div);
+    var removebutton = document.getElementsByClassName("span");
+    for (var i = 0; i < removebutton.length; i++) {
+        removebutton[i].addEventListener("click", removecontent)
+    }
+
+
+
+}
+function removecontent(e) {
+    e.target.parentElement.remove()
+}
+
+
+
+
+
+
+
+function show() {
+    var side = document.getElementsByClassName("sidebar");
+    var main = document.getElementsByClassName("main-body");
+    side[0].style.transform = "translate(0%,0%)";
+    main[0].style.marginRight = "200px";
+}
+
+function hide() {
+    var side = document.getElementsByClassName("sidebar");
+    var main = document.getElementsByClassName("main-body");
+    side[0].style.transform = "translate(100%,0%)";
+    main[0].style.marginRight = "0px";
+}
+            
+
+    </script>
+
+</body>
+
+</html>

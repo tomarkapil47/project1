@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .counter{display: flex;}
+        .counter .count{padding: 10px;cursor: pointer;}
+
+    </style>
+</head>
+<body>
+    <div class="counter">
+        <div id="increment" class="count" onclick="add()">+</div>
+        <div id="number" class="count">0</div>
+        <div id="decreament" class="count" onclick="subtract()">-</div>
+    </div>
+
+    <script>
+        var increament=document.getElementById("increment");
+        var decreament=document.getElementById("decreament");
+        var number=document.getElementById("number");
+        a=0;
+         function add(){
+                a+=1;
+                number.innerHTML=a;
+         }
+          
+         function subtract(){
+             a+=-1;
+             number.innerHTML=a
+         }
+
+    </script>
+    
+</body>
+</html>
